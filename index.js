@@ -1,50 +1,51 @@
 const ctx = document.querySelector('.js-chart').getContext('2d');
-/* console.log(ctx);
+console.log(ctx);
 function fetchData() {
     fetch("./csv/Plumetop_heights_timeseries.csv")
         .then((response) => {return response.text();})
         .then((data) => {
-            console.log(
-            window.Papa.parse(data, {header: true}).data);
-        })
-    
-}
-fetchData();
-console.log(window);
- */
-var myChart = new Chart(ctx, {
-    type: 'bar',
+            
+            const parsedData = window.Papa.parse(data, { header: true }).data;
+            console.log(parsedData);
+            const labels = parsedData.map(entry => entry.DaysFromInjection)
+            console.log(labels);
+            const dataFirst = parsedData.map(entry => entry.OmpsLpPlumeTopHeightsKm);
+            const dataSecond = parsedData.map(entry => entry.ModelPlumeTopHeightkm);
+            
+            var myChart = new Chart(ctx, {
+    type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: labels,
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+            label: 'OmpsLpPlumeTopHeightsKm',
+            data: dataFirst,
+            backgroundColor: "rgba(255, 159, 64, 0.2)",
+            borderColor: "rgba(255, 159, 64, 0.2)",
             borderWidth: 1
-        }]
+        },
+            {
+            label: 'ModelPlumeTopHeightkm',
+            data: dataSecond,
+            backgroundColor: "rgba(250, 159, 164, 0.2)",
+            borderColor: "rgba(220, 159, 164, 0.2)",
+            borderWidth: 1
+        }
+        ]
     },
     options: {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    //beginAtZero: true
                 }
             }]
         }
     }
 });
+        })
+    
+}
+fetchData();
+
+console.log(window);
+

@@ -1,4 +1,4 @@
-﻿Days from Injection ,OMPS-LP Plume top heights (km),"Model plume top height (km, passive aerosols)","Model plume top height (km, point source emissions)","Model plume top height (km, smeared emissions)","Model plume top height (km, smeared emissions + modified optics)"
+﻿DaysFromInjection,OmpsLpPlumeTopHeightsKm,ModelPlumeTopHeightkm,"Model plume top height (km, point source emissions)","Model plume top height (km, smeared emissions)","Model plume top height (km, smeared emissions + modified optics)"
 0,12.5,12.5,13.5,12.5,12.5
 1,14.5,13.5,15.5,14.5,14.5
 2,14.5,13.5,17.5,15.5,15.5
